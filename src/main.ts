@@ -22,8 +22,9 @@ const listAirbnbRoomsUnavailableDays = async () => {
     jsonUnavailableDaysRepository
   );
 
-  await computeUnavailableDaysUseCase.execute(roomIds);
-
+  await computeUnavailableDaysUseCase.execute(roomIds).finally(() => {
+    process.exit(0);
+  })
   process.exit(0);
 };
 

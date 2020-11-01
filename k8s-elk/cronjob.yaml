@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
     name: occupation-crawler-job
 spec:
-    schedule: "1 */1 * * *"
+    schedule: "*/10 * * * *"
     jobTemplate:
         spec:
             template:
