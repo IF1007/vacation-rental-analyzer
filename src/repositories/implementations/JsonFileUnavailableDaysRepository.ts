@@ -15,8 +15,8 @@ export class JsonFileUnavailableDaysRepository
       return new UnavailableDaysByRoomAndMonth(JSON.parse(file));
     }
 
-    if (!fs.existsSync("./tmp/result")) {
-      fs.mkdirSync("./tmp/result", {
+    if (!fs.existsSync("./tmp")) {
+      fs.mkdirSync("./tmp", {
         recursive: true
       });
     }

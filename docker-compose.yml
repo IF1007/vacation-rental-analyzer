@@ -12,4 +12,4 @@ services:
       - ./src:/app/src
       - ./package-lock.json:/app/package-lock.json:ro
       - ./package.json:/app/package.json:ro
-      - ./unavailable_days.json:/app/tmp/result/unavailable_days.json
+      - ./unavailable_days.json:/app/tmp/output.log

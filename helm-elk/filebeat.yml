@@ -1,9 +1,7 @@
 filebeat.inputs:
   - type: log
     paths:
-      - /tmp/result/unavailable_days.json
-    json.keys_under_root: true
-    json.add_error_key: true
+      - /tmp/output.log
  
 output:
   logstash:

@@ -14,7 +14,7 @@ const listAirbnbRoomsUnavailableDays = async () => {
   const airbnbCrawlerProvider = new AirbnbCrawlerProvider(browser);
 
   const jsonUnavailableDaysRepository = new JsonFileUnavailableDaysRepository(
-    <string>"./tmp/result/unavailable_days.json"
+    <string>"./tmp/output.log"
   );
 
   const computeUnavailableDaysUseCase = new ComputeUnavailableDaysByRoomAndMonthUseCase(
@@ -26,8 +26,8 @@ const listAirbnbRoomsUnavailableDays = async () => {
   .catch(error => console.log(error))
   .finally(async () => {
     console.log("Finishing at " + new Date().getTime());
-    await new Promise(resolve => setTimeout(resolve, 300000));
-    console.log("Finishing at " + new Date().getTime());
+    // await new Promise(resolve => setTimeout(resolve, 300000));
+    // console.log("Finishing at " + new Date().getTime());
     process.exit(0);
   })
   process.exit(0);
