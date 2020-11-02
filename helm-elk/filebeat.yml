@@ -1,9 +1,5 @@
 filebeat.inputs:
-  - type: log
-    paths:
-      - /tmp/output.log
-      - /tmp/unavailable_days.json
-      - /app/tmp/unavailable_days.json
+  - type: stdin
  
 output:
   logstash:

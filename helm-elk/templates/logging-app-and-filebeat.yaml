@@ -16,7 +16,13 @@ spec:
     spec:
       containers:
       - name: app-auto
-        image: sladesoftware/log-application:latest
+        image: gustavolopess/vacation-rental-analyzer:latest
+        args:
+          - npm
+          - start
+          - echo 1
+          - sleep 100
+          - echo 1
         volumeMounts:
         - name:  logstash-output
           mountPath: /tmp/
