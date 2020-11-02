@@ -24,6 +24,15 @@ Project uses a local version of [kube-prometheus-stack](https://artifacthub.io/p
 
 Helm artifacts from [elastic](https://helm.elastic.co) for Elastic Search, Kibana, FileBeat and MetricBeat also were used.
 
+# Challenges
+
+- Connection between Crawler, Filebeats and Logstash
+
+- Slow environment  
+
+- Deprecated microservices and configurations  
+
+- Outdated discussions and absurd amount of different approaches   
 
 # Relevant references
 
