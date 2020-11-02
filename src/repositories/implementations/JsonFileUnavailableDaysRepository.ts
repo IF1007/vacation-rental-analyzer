@@ -15,6 +15,11 @@ export class JsonFileUnavailableDaysRepository
       return new UnavailableDaysByRoomAndMonth(JSON.parse(file));
     }
 
+    if (!fs.existsSync("./tmp")) {
+      fs.mkdirSync("./tmp", {
+        recursive: true
+      });
+    }
     return new UnavailableDaysByRoomAndMonth({});
   }
 
@@ -28,8 +33,10 @@ export class JsonFileUnavailableDaysRepository
 
     fs.writeFileSync(
       this.jsonFilePath,
-      JSON.stringify(unavailableDays, setToJson, 2),
+      JSON.stringify(unavailableDays, setToJson, 0),
       { flag: "w+" }
     );
+    console.log(this.jsonFilePath);
+    console.log(JSON.stringify(unavailableDays, setToJson, 0));
   }
 }

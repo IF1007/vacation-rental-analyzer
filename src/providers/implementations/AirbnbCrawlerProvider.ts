@@ -17,7 +17,7 @@ export class AirbnbCrawlerProvider implements IAirbnbCrawlerProvider {
   private async initRoomPage(roomId: string): Promise<Page> {
     const roomUrl = `${this.airbnbUrl}/rooms/${roomId}`;
     const page = await this.browser.newPage();
-    await page.goto(roomUrl, { waitUntil: "networkidle0" });
+    await page.goto(roomUrl, { timeout: 120000, waitUntil: "networkidle0" });
 
     return page;
   }

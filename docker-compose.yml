@@ -5,11 +5,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+    - 8082:8080
     volumes:
       - ./dist:/app/dist
       - ./src:/app/src
       - ./package-lock.json:/app/package-lock.json:ro
       - ./package.json:/app/package.json:ro
-      - ./unavailable_days.json:/app/unavailable_days.json
-
-
+      - ./unavailable_days.json:/app/tmp/output.log

@@ -5,7 +5,7 @@ import { JsonFileUnavailableDaysRepository } from "./repositories/implementation
 
 const listAirbnbRoomsUnavailableDays = async () => {
   const roomIds = (<string>process.env.AIRBNB_ROOM_IDS).split(",");
-
+  console.log("Starting at " + new Date().getTime());
   const browser = await puppeteer.launch({
     headless: true,
     args: ["--no-sandbox"],
@@ -14,7 +14,7 @@ const listAirbnbRoomsUnavailableDays = async () => {
   const airbnbCrawlerProvider = new AirbnbCrawlerProvider(browser);
 
   const jsonUnavailableDaysRepository = new JsonFileUnavailableDaysRepository(
-    <string>process.env.UNAVAILABLE_DAYS_JSON_PATH
+    <string>"./tmp/output.log"
   );
 
   const computeUnavailableDaysUseCase = new ComputeUnavailableDaysByRoomAndMonthUseCase(
@@ -22,8 +22,14 @@ const listAirbnbRoomsUnavailableDays = async () => {
     jsonUnavailableDaysRepository
   );
 
-  await computeUnavailableDaysUseCase.execute(roomIds);
-
+  await computeUnavailableDaysUseCase.execute(roomIds)
+  .catch(error => console.log(error))
+  .finally(async () => {
+    console.log("Finishing at " + new Date().getTime());
+    // await new Promise(resolve => setTimeout(resolve, 300000));
+    // console.log("Finishing at " + new Date().getTime());
+    process.exit(0);
+  })
   process.exit(0);
 };
 
