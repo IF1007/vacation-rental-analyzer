@@ -5,7 +5,7 @@ metadata:
   labels:
     app: logstash
   name: logstash-deployment
-  namespace: kube-system
+  namespace: monitoring
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
