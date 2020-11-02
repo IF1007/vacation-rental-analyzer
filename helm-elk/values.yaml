@@ -1,7 +1,16 @@
 global:
-  hostIp: 127.0.0.1
+  hostIp: 192.168.49.2
+  namespace: elk
  
 ports:
   elasticsearch: 31996
   kibana: 31997
   logstash: 31998
+
+cronjob:
+  repository: XXXX
+  crons:
+   "0":
+     name: my-first-cron
+     command: my:first:cron
+     schedule: "*/10 * * * *"

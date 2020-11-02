@@ -18,7 +18,7 @@ spec:
       - name: app-auto
         image: sladesoftware/log-application:latest
         volumeMounts:
-        - name: log-output
+        - name:  logstash-output
           mountPath: /tmp/
       - name: beat-auto
         image: elastic/filebeat:7.8.0
@@ -30,12 +30,12 @@ spec:
         - name: LOGSTASH_HOSTS
           value: {{ .Values.global.hostIp }}:{{ .Values.ports.logstash }}
         volumeMounts:
-        - name: log-output
+        - name:  logstash-output
           mountPath: /tmp/
         - name: beat-config
           mountPath: /etc/filebeat/
       volumes:
-      - name: log-output
+      - name:  logstash-output
         emptyDir: {}
       - name: beat-config
         configMap:

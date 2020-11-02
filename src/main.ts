@@ -14,7 +14,7 @@ const listAirbnbRoomsUnavailableDays = async () => {
   const airbnbCrawlerProvider = new AirbnbCrawlerProvider(browser);
 
   const jsonUnavailableDaysRepository = new JsonFileUnavailableDaysRepository(
-    <string>process.env.UNAVAILABLE_DAYS_JSON_PATH
+    <string>"./tmp/unavailable_days.json"
   );
 
   const computeUnavailableDaysUseCase = new ComputeUnavailableDaysByRoomAndMonthUseCase(

@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: log-auto
+  name: logstash
   labels:
-    name: log-auto
+    name: logstash
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: log-auto
+      name: logstash
   template:
     metadata:
       labels:
-        name: log-auto
+        name: logstash
     spec:
       containers:
-        - name: log-auto
+        - name: logstash
           image: logstash:7.8.0
           ports:
             - containerPort: 5044
@@ -24,14 +24,14 @@ spec:
             - name: ELASTICSEARCH_HOSTS
               value: http://{{ .Values.global.hostIp }}:{{ .Values.ports.elasticsearch }}
           volumeMounts:
-            - name: log-auto-pipeline
+            - name: logstash-pipeline
               mountPath: /usr/share/logstash/pipeline/
           command:
             - logstash
       volumes:
-        - name: log-auto-pipeline
+        - name: logstash-pipeline
           configMap:
-            name: log-auto-pipeline
+            name: logstash-pipeline
             items:
               - key: logstash.conf
                 path: logstash.conf
@@ -39,7 +39,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: log-auto-pipeline
+  name: logstash-pipeline
 data:
   logstash.conf: |
 {{ .Files.Get "logstash.conf" | indent 4 }}
@@ -47,12 +47,12 @@ data:
 apiVersion: v1
 kind: Service
 metadata:
-  name: log-auto
+  name: logstash
   labels:
-    name: log-auto
+    name: logstash
 spec:
   selector:
-    name: log-auto
+    name: logstash
   type: NodePort
   ports:
   - nodePort: {{ .Values.ports.logstash }}

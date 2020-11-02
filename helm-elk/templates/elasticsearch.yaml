@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: es-auto
+  name: elasticsearch
+
   labels:
-    name: es-auto
+    name: elasticsearch
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: es-auto
+      name: elasticsearch
   template:
     metadata:
       labels:
-        name: es-auto
+        name: elasticsearch
     spec:
       containers:
-        - name: es-auto
+        - name: elasticsearch
           image: elasticsearch:7.8.0
           ports:
             - containerPort: 9200
@@ -27,12 +28,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: elasticsearch
   labels:
-    name: es-auto
-  name: es-auto
+    name: elasticsearch
 spec:
   selector:
-    name: es-auto
+    name: elasticsearch
   type: NodePort
   ports:
     - nodePort: {{ .Values.ports.elasticsearch }}

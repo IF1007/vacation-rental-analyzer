@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kib-auto
+  name: kibana
   labels:
-    name: kib-auto
+    name: kibana
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: kib-auto
+      name: kibana
   template:
     metadata:
       labels:
-         name: kib-auto
+         name: kibana
     spec:
       containers:
-        - name: kib-auto
+        - name: kibana
           image: kibana:7.8.0
           ports:
             - containerPort: 5601
@@ -27,12 +27,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kib-auto
+  name: kibana
   labels:
-    name: kib-auto
+    name: kibana
 spec:
   selector:
-    name: kib-auto
+    name: kibana
   type: NodePort
   ports:
     - nodePort: {{ .Values.ports.kibana }}

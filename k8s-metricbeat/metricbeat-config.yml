@@ -15,7 +15,7 @@ data:
     processors:
     - add_cloud_metadata:
     output.elasticsearch:
-      hosts: ["192.168.49.2:9200"] 
+      hosts: ["192.168.49.2:31996"] 
       setup.dashboards.enabled: true
       setup.template.settings:
         index.number_of_shards: 5
@@ -33,7 +33,7 @@ data:
   kubernetes.yml: |-
     - module: prometheus
       period: 10s
-      hosts: ["192.168.49.2:8080"]
+      hosts: ["192.168.49.2:9090"]
       metrics_path: '/federate'
       query:
         'match[]': '{__name__!=""}'
