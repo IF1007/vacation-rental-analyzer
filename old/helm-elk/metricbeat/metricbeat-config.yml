@@ -2,7 +2,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: metricbeat-config
-  namespace: monitoring 
   labels:
     k8s-app: metricbeat
 data:
@@ -26,7 +25,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: metricbeat-modules
-  namespace: monitoring
   labels:
     k8s-app: metricbeat
 data:
