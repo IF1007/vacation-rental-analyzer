@@ -28,7 +28,7 @@ export class JsonFileUnavailableDaysRepository
 
     fs.writeFileSync(
       this.jsonFilePath,
-      JSON.stringify(unavailableDays, setToJson, 2),
+      JSON.stringify(unavailableDays, setToJson, 0),
       { flag: "w+" }
     );
   }
