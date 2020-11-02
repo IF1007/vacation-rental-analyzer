@@ -3,7 +3,7 @@ NAME=$2
 NS=log
 CHART=elastic/${NAME}
 VERSION=v7.6.1
-VALUES=${NAME}/values.yaml
+VALUES=elk/${NAME}/values.yaml
 RELEASE=$(helm ls | awk '{print $1}' | grep ${NAME})
 
 display_usage() {
@@ -21,7 +21,7 @@ fi
 
 case $1 in
 install)
-		helm install ${CHART} --namespace ${NS} -f ${VALUES} --version ${VERSION} --generate-name --create-namespace
+		helm install ${NAME} ${CHART} --namespace ${NS} -f ${VALUES} --version ${VERSION} --create-namespace
 		#helm install --debug --dry-run --name ${NAME} --namespace ${NS} -f ${NAME}.yaml ${CHART} > ${NAME}-debug.yaml
 		echo "Installed ${NAME}"
 		;;

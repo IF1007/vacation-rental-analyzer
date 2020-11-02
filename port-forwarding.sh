@@ -1,0 +1,1 @@
+kubectl port-forward svc/kibana-kibana 5601:5601 -n=log & kubectl port-forward svc/promstack-grafana 3000:80 & kubectl port-forward svc/promstack-grafana & kubectl port-forward svc/promstack-prometheus-prometheus 9090:9090
